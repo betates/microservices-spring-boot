@@ -1,7 +1,7 @@
 package com.infosys.learning.service;
 
 import com.infosys.learning.dto.*;
-import com.infosys.learning.model.User;
+import com.infosys.learning.model.*;
 import com.infosys.learning.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,6 +80,15 @@ public class LearningService {
 
         return "Register success !";
         
+    }
+
+    public User login(UserRequest userRequest) {
+        User existUser = userRepository.findByUserNameAndPassWord(
+                userRequest.getUsername(), userRequest.getPassword());
+        if (existUser == null) {
+            return null;
+        }
+        return existUser;
     }
 
 }

@@ -1,6 +1,7 @@
 package com.infosys.learning.controller;
 
 import com.infosys.learning.dto.*;
+import com.infosys.learning.model.*;
 import com.infosys.learning.service.LearningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -45,6 +46,11 @@ public class LearningController {
 
         return LearningService.register(userRequest);
 
+    }
+
+    @PostMapping(value = "login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public User login(@RequestBody(required = true) UserRequest userRequest) {
+        return learningService.login(userRequest);
     }
 
 }
