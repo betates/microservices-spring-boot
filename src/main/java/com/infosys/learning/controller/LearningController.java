@@ -40,4 +40,11 @@ public class LearningController {
         return LearningService.getPerson(person.getName(), person.getYeaOfBirth());
     }
 
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String register(@RequestBody(required = true) UserRequest userRequest) {
+
+        return LearningService.register(userRequest);
+
+    }
+
 }
